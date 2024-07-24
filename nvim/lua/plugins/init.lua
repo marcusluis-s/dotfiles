@@ -6,4 +6,5 @@ return {
     require("plugins.autopairs"),
     require("plugins.gitsigns"),
     require("plugins.telescope"),
+    require("plugins.cmp"),
 }
