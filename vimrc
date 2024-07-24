@@ -112,10 +112,10 @@ let g:markdown_fenced_languages = [
 \ ]
 
 " Background transparent
-highlight Normal ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight LineNr ctermbg=NONE guibg=NONE
-highlight Folded ctermbg=NONE guibg=NONE
+" highlight Normal ctermbg=NONE guibg=NONE
+" highlight NonText ctermbg=NONE guibg=NONE
+" highlight LineNr ctermbg=NONE guibg=NONE
+" highlight Folded ctermbg=NONE guibg=NONE
 
 " To prevent Vim from highlighting underscores as errors in specific file types
 autocmd BufNewFile,BufRead,BufEnter *.md,*.rmd syn match markdownIgnore "\w\@<=\w\@="
