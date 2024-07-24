@@ -17,6 +17,7 @@ return {
                 "markdown_inline",
                 "vim",
                 "vimdoc",
+                "query",
                 "dockerfile",
                 "gitignore",
                 "javascript",
