@@ -25,7 +25,9 @@ return {
                 "typescript",
                 "tsx",
                 "python",
+                "diff",
             },
+            -- Autoinstall parsers that are not installed
             auto_install = true,
             autopairs = {
                 enable = true,
@@ -41,6 +43,15 @@ return {
             },
             indent = {
                 enable = true,
+            },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "gnn",
+                    node_incremental = "grn",
+                    scope_incremental = "grc",
+                    node_decremental = "grm",
+                },
             },
         }
     end
