@@ -33,7 +33,7 @@ return {
                 enable = true,
             },
             autotag = {
-                enable = true,
+                enable = false,
             },
             endwise = {
                 enable = true,

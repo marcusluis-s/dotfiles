@@ -7,4 +7,5 @@ return {
     require("plugins.gitsigns"),
     require("plugins.telescope"),
     require("plugins.cmp"),
+    require("plugins.nvim-ts-autotag"),
 }
