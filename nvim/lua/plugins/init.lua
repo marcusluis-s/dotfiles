@@ -8,4 +8,5 @@ return {
     require("plugins.telescope"),
     require("plugins.cmp"),
     require("plugins.nvim-ts-autotag"),
+    require("plugins.nvim-hl-colors"),
 }
