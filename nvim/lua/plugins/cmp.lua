@@ -34,11 +34,14 @@ return {
         -- into multiple repos for maintenance purposes.
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
+        "windwp/nvim-autopairs",
     },
     config = function()
         -- See `:help cmp`
         local cmp = require "cmp"
         local luasnip = require "luasnip"
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
         luasnip.config.setup {}
 
         cmp.setup {
@@ -112,5 +115,10 @@ return {
                 { name = "path" },
             },
         }
+
+        cmp.event:on(
+            "confirm_done",
+            cmp_autopairs.on_confirm_done()
+        )
     end,
 }
