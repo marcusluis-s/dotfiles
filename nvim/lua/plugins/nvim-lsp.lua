@@ -16,18 +16,22 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-        -- Key mappings for diagnostics
-        local opts = { noremap=true, silent=true }
-
+        
+        -- Servers
         lspconfig.clangd.setup({
             capabilities = lsp_capabilities
         })
+
         lspconfig.tsserver.setup({
             capabilities = lsp_capabilities
         })
 
- 
+        lspconfig.cssls.setup({
+            capabilities = lsp_capabilities
+        })
+
+        -- Key mappings for diagnostics
+        local opts = { noremap=true, silent=true } 
 
         -- Show diagnostics in a floating window
         vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua open_diagnostics_float()<CR>", opts)
