@@ -68,3 +68,12 @@ vim.opt.confirm = true
 
 -- Set up the default shell in neovim
 vim.opt.shell = vim.fn.exepath "zsh"
+
+-- Define how whispaces characters are visually represented in the editor
+vim.opt.list = false
+vim.opt.listchars = {
+    eol = '↵',
+    trail = '~',
+    tab = '>-',
+    nbsp = '␣'
+}
