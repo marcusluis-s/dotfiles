@@ -9,4 +9,5 @@ return {
     require("plugins.cmp"),
     require("plugins.nvim-ts-autotag"),
     require("plugins.nvim-hl-colors"),
+    require("plugins.illuminate"),
 }
