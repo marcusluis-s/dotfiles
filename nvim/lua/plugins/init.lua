@@ -10,4 +10,5 @@ return {
     require("plugins.nvim-ts-autotag"),
     require("plugins.nvim-hl-colors"),
     require("plugins.illuminate"),
+    require("plugins.lualine"),
 }
