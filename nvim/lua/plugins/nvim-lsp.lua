@@ -60,6 +60,10 @@ return {
             capabilities = lsp_capabilities
         })
 
+        -- lspconfig.intelephense.setup({
+        --     capabilities = lsp_capabilities
+        -- }) 
+
         -- Key mappings for diagnostics
         local opts = { noremap=true, silent=true } 
 
@@ -83,3 +87,4 @@ return {
         vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     end
 }
+
