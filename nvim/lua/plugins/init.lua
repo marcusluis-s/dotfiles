@@ -11,4 +11,5 @@ return {
     require("plugins.nvim-hl-colors"),
     require("plugins.illuminate"),
     require("plugins.lualine"),
+    require("plugins.oil-nvim"),
 }
