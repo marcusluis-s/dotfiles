@@ -210,3 +210,4 @@ set foldminlines=1      " Mínimo de linhas para ativar um fold
 " KEYBINDINGS
 " ===========================
 
+" It's empty here
