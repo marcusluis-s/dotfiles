@@ -31,8 +31,6 @@ colorscheme tokyonight                          " Set the colorscheme to tokyoni
 set laststatus=2                                " Show status line always
 set statusline=%f\ %y\ %m\ %=Ln:%l/%L,\ Col:%c  " and make it informative
 
-set lazyredraw                " Optimize screen redraw
-
 " Display special characters
 set list                      " Display tabs, trailing spaces, and other special characters
 set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:+
