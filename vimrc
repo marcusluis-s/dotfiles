@@ -27,9 +27,80 @@ let g:tokyonight_style = 'night'                " Theme style (available: night,
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight                          " Set the colorscheme to tokyonight
 
-" Status line
-set laststatus=2                                " Show status line always
-set statusline=%f\ %y\ %m\ %=Ln:%l/%L,\ Col:%c  " and make it informative
+" Enable statusline
+set laststatus=2
+" Dynamic statusline definition
+set statusline=
+set statusline+=%#User2#                 " Highlight group for mode
+set statusline+=%{StatuslineMode()}      " Current mode
+set statusline+=%#User1#                 " Default text highlight
+set statusline+=\ %{b:gitbranch}           " Git branch info
+set statusline+=                     " Escaped <<
+set statusline+=%t                     " Short filename
+set statusline+=                     " Escaped >>
+set statusline+=%=                       " Right alignment
+set statusline+=%#User3#                 " Highlight for flags
+set statusline+=%h%m%r                   " File flags (help, modified, readonly)
+set statusline+=\                        " Escaped
+set statusline+=%l/%L\                   " Line count
+set statusline+=%y                       " File type
+
+" Dynamic highlight group updates
+function! SetStatuslineColors()
+  " Get colors from the current theme
+  let l:status_fg = synIDattr(synIDtrans(hlID('StatusLine')), 'fg#')
+  let l:status_bg = synIDattr(synIDtrans(hlID('StatusLine')), 'bg#')
+  let l:noncurrent_fg = synIDattr(synIDtrans(hlID('StatusLineNC')), 'fg#')
+  let l:noncurrent_bg = synIDattr(synIDtrans(hlID('StatusLineNC')), 'bg#')
+
+  " Define custom highlight groups based on theme colors
+  exec 'hi User1 guifg=' . l:status_fg . ' guibg=' . l:status_bg
+  " Inverted colors for mode
+  exec 'hi User2 guifg=' . l:status_bg . ' guibg=' . l:status_fg
+  exec 'hi User3 guifg=' . l:noncurrent_fg . ' guibg=' . l:noncurrent_bg
+endfunction
+
+" Automatically update colors on color scheme change
+autocmd ColorScheme * call SetStatuslineColors()
+call SetStatuslineColors()
+
+" Statusline mode display function
+function! StatuslineMode()
+    let l:mode = mode()
+    if l:mode ==# "n"
+        return "NORMAL"
+    elseif l:mode ==# "v"
+        return "VISUAL"
+    elseif l:mode ==# "i"
+        return "INSERT"
+    elseif l:mode ==# "R"
+        return "REPLACE"
+    endif
+    return ""
+endfunction
+
+" Git branch extraction function
+function! StatuslineGitBranch()
+  let b:gitbranch = ""
+  if &modifiable
+    try
+      lcd %:p:h
+    catch
+      return
+    endtry
+    let l:gitrevparse = system("git rev-parse --abbrev-ref HEAD")
+    lcd -
+    if l:gitrevparse !~ "fatal: not a git repository"
+      let b:gitbranch = "  (".substitute(l:gitrevparse, '\n', '', 'g').") "
+    endif
+  endif
+endfunction
+
+" Automatically update git branch info
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
 
 " Display special characters
 set list                      " Display tabs, trailing spaces, and other special characters
