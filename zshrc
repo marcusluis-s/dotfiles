@@ -29,6 +29,8 @@ precmd() {
 
 # Prompt
 prompt="%B%F{#5e5c64}┌%f"'${VIRTUAL_ENV:+($(basename$VIRTUAL_ENV))}'"%F{#5e5c64}[%f%F{#77767b}%n%f %F{#ffa348}in%F{#5e5c64}] ─ [%F{#77767b}%(6~.%-1~/…/%3~.%5~)%f%F{#5e5c64}]%f%F{#504e55}"'${vcs_info_msg_0_}'"%f"$'\n'"%F{#5e5c64}└╼%f%F{#ffa348}$%f %b"
+# Simple prompt
+# PROMPT='%n % %3~%f ${vcs_info_msg_0_}%% '
 
 alias vim="nvim"
 
