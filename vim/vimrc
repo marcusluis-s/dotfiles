@@ -23,9 +23,9 @@ if !has('gui_running')
 endif
 
 " Display special characters
-set list                      " Display tabs, trailing spaces, and other special characters
-set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:+
-set showbreak=↳               " Show ↳ at the end of the buffer
+" set list                      " Display tabs, trailing spaces, and other special characters
+" set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:+
+" set showbreak=↳               " Show ↳ at the end of the buffer
 
 " ===========================
 " INDENTATION AND FORMATTING
