@@ -19,18 +19,46 @@ setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 
+# Enable colors and version control info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
-# This line obtains information from the vcs.
-zstyle ':vcs_info:git*' formats "(%b) "
+autoload -U colors && colors
+
+# Configure vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats "%{$fg[yellow]%}(%b)%{$reset_color%} "
+zstyle ':vcs_info:git*' actionformats "%{$fg[yellow]%}(%b|%a)%{$reset_color%} "
+
+# Execute before each prompt
 precmd() {
     vcs_info
+    # Get the current directory (last 3 levels)
+    dir="%3~"
+    # Check if in git repo and get status
+    if [ -n "${vcs_info_msg_0_}" ]; then
+        git_status=$(git status --porcelain 2>/dev/null | wc -l | xargs)
+        if [ $git_status -gt 0 ]; then
+            git_changes="%{$fg[red]%}✗${git_status}%{$reset_color%} "
+        else
+            git_changes="%{$fg[green]%}✓%{$reset_color%} "
+        fi
+    else
+        git_changes=""
+    fi
 }
 
-# Prompt
-PROMPT='%n % %3~%f ${vcs_info_msg_0_}%% '
+# Fun alternatives to hostname (pick one or rotate them!)
+local fun_host="💻"  # Simple emoji
+# local fun_host="The Matrix"  # Sci-fi vibe
+# local fun_host="Command Central"  # Cool name
+# local fun_host="BeepBoop"  # Robot feel
 
-alias vim="nvim"
+# Set up the prompt
+PROMPT='%{$fg[cyan]%}%n%{$reset_color%} at %{$fg[magenta]%}${fun_host}%{$reset_color%} in %{$fg[blue]%}${dir}%{$reset_color%} ${vcs_info_msg_0_}${git_changes}%# '
+
+# Optional: Right-side prompt with time
+RPROMPT='%{$fg[grey]%}%*%{$reset_color%}'
+
+# alias vim="nvim"
 
 # Select all suggestion instead of top on result only
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
