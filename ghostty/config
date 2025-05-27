@@ -8,3 +8,6 @@ font-size = 16
 # Options
 mouse-hide-while-typing = true
 
+# Window
+window-save-state = always
+quit-after-last-window-closed=true
