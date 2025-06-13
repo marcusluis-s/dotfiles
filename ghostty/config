@@ -4,11 +4,13 @@ font-size = 16
 # font-family-bold = Cascadia Code NF
 # font-family-italic = Cascadia Code NF
 # font-family-bold-italic = Cascadia Code NF
+background-opacity = 0.95
+background-blur-radius = 20
 
 # Options
 mouse-hide-while-typing = true
-title = " "
-macos-titlebar-style = hidden
+# title = " "
+# macos-titlebar-style = hidden
 
 copy-on-select = clipboard
 
@@ -23,6 +25,9 @@ keybind = super+z>j=goto_split:bottom
 keybind = super+z>k=goto_split:top
 keybind = super+z>l=goto_split:right
 
+# New Tab
+# keybind = super+t=new_tab
+
 # Window
 window-save-state = always
 quit-after-last-window-closed=true
@@ -30,3 +35,4 @@ window-decoration = true
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
+
