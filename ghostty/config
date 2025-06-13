@@ -9,7 +9,7 @@ background-blur-radius = 20
 
 # Options
 mouse-hide-while-typing = true
-# title = " "
+title = " "
 # macos-titlebar-style = hidden
 
 copy-on-select = clipboard
