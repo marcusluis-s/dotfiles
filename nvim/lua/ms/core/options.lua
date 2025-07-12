@@ -61,3 +61,5 @@ vim.opt.splitright = true			-- New windows split to the right of the current one
 
 vim.opt.diffopt:append("vertical")	-- Show diffs vertical splits by default
 
+-- vim.opt.cmdheight = 1               -- To make the status line and command line area take up less vertical space
+

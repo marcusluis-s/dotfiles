@@ -5,7 +5,7 @@ vim.g.mapleader = " "				-- Set leader key to space
 vim.g.maplocalleader = " "			-- Set local leader key to space
 
 -- Fast saving
-map('n', '<C-s>', ':w<CR>', { desc = 'Save file (Ctrl-S)' })
+-- map('n', '<C-s>', ':w<CR>', { desc = 'Save file (Ctrl-S)' })
 
 -- Window navigation (using Ctrl + h/j/k/l)
 map('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
