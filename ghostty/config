@@ -5,8 +5,8 @@ font-size = 16
 # font-family-bold = Cascadia Code NF
 # font-family-italic = Cascadia Code NF
 # font-family-bold-italic = Cascadia Code NF
-background-opacity = 0.95
-background-blur-radius = 20
+# background-opacity = 0.95
+# background-blur-radius = 20
 
 # Options
 mouse-hide-while-typing = true
