@@ -33,14 +33,14 @@ return {
                 follow_files = true,
             },
             attach_to_untracked = true, -- Show signs for untracked files
-            current_line_blame = true,  -- Show blame info for the current line
+            --[[ current_line_blame = true,  -- Show blame info for the current line
             current_line_blame_opts = {
                 virt_text = true,
                 virt_text_pos = "eol", -- Place blame at end of line
                 delay = 300,           -- Delay before showing blame (ms)
                 ignore_whitespace = false,
             },
-            current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+            current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>', ]]
             sign_priority = 6, -- Priority for signs to avoid conflicts
             update_debounce = 100, -- Debounce time for updates (ms)
             status_formatter = nil, -- Use default status line format

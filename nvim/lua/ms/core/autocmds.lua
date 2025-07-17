@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
             local lcount = vim.api.nvim_buf_line_count(buf)
             if mark[1] > 0 and mark[1] <= lcount then
                 vim.api.nvim_win_set_cursor(0, mark)
-                print("Restored cursor to line " .. mark[1] .. " in " .. bufname) -- Debug
+                -- print("Restored cursor to line " .. mark[1] .. " in " .. bufname) -- Debug
             end
         end
     end,
@@ -20,3 +20,4 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- Configuração do shada para salvar marcas globais
 vim.opt.shada = "'1000,f1,<50,s10,h"
+

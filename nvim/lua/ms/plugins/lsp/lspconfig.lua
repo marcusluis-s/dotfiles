@@ -1,5 +1,3 @@
--- vim.g.mapleader = " " -- Define <leader> como espaço
-
 return {
     {
         "neovim/nvim-lspconfig",
@@ -8,6 +6,9 @@ return {
             "williamboman/mason.nvim", -- Dependência para garantir que o Mason esteja carregado
         },
         config = function()
+            -- Define o estilo de borda para todas as janelas flutuantes
+            vim.o.winborder = "rounded"
+
             -- Configurações globais de diagnósticos
             vim.diagnostic.config({
                 underline = true,
@@ -16,22 +17,23 @@ return {
                 severity_sort = true,
             })
 
-            -- Configuração do handler para textDocument/hover
-            vim.api.nvim_set_hl(0, "LspFloatWinNormal", { bg = "#2a2a2a", fg = "#ffffff" })
+            -- A configuração de borda para textDocument/hover e textDocument/signatureHelp não é mais necessária
+            -- porque `vim.o.winborder` define a borda para todas as janelas flutuantes.
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-                border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-                max_width = math.floor(vim.o.columns * 0.6),
-                max_height = 20,
-                focusable = true,
-                highlight = "LspFloatWinNormal",
+                -- border = 'rounded', -- Esta linha não é mais necessária
             })
+            vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+                vim.lsp.handlers.signature_help
+                -- {border = 'rounded'} -- Este parâmetro não é mais necessário
+            )
 
             -- Função on_attach para mapeamentos
             local on_attach = function(client, bufnr)
                 local opts_keymaps = { buffer = bufnr, noremap = true, silent = true }
+                -- local opts = { buffer = bufnr, noremap = true, silent = true }
 
                 -- Hover documentation keymap
-                vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, vim.tbl_extend("force", opts_keymaps, { desc = "Show LSP hover documentation" }))
+                vim.keymap.set("n", "<leader>[", vim.lsp.buf.hover, vim.tbl_extend("force", opts_keymaps, { desc = "Show LSP hover documentation" }))
 
                 -- Mapeamentos de teclas comuns
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts_keymaps, { desc = "Go to definition" }))

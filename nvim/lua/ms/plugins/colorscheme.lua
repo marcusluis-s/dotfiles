@@ -6,10 +6,20 @@ return {
         config = function()
             require("tokyonight").setup({
                 style = "moon",
-                transparent = true,
+                -- transparent = true,
             })
-            -- load the colorscheme here
+            -- Load the colorscheme here
             vim.cmd([[colorscheme tokyonight]])
+
+            -- LSP janela flutuante
+            vim.api.nvim_set_hl(0, "LspFloatWinNormal", {
+                bg = "#292e42",
+                fg = "#d4d8e5",
+            })
+            vim.api.nvim_set_hl(0, "LspFloatWinBorder", {
+                fg = "#444b6a",
+                bg = "#292e42",
+            })
         end,
     }
 }
